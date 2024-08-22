@@ -13,7 +13,7 @@
  * @package WP_Breadcrumbs
  */
 
-namespace WP_Breadcrumbs;
+namespace Seo_Ready\Breadcrumbs;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	header( 'Status: 403 Forbidden' );
@@ -22,9 +22,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Class Breadcrumbs.
+ * Class Trails.
  */
-class Breadcrumbs {
+class Trails {
 
 	/**
 	 * Breadcrumb trail.
@@ -227,6 +227,13 @@ class Breadcrumbs {
 				$this->add_crumb( $post_type->labels->singular_name, get_post_type_archive_link( get_post_type( $post ) ) );
 			}
 		} else {
+			// Get posts page ID.
+			$posts_page_id = get_option( 'page_for_posts' );
+
+			if ( $posts_page_id ) {
+				$this->add_crumb( get_the_title( $posts_page_id ), get_permalink( $posts_page_id ) );
+			}
+
 			$cat = current( get_the_category( $post ) );
 			if ( $cat ) {
 				$this->term_ancestors( $cat->term_id, 'category' );
