@@ -13,7 +13,7 @@
  * @package WP_Breadcrumbs
  */
 
-namespace Seo_Ready\Breadcrumbs;
+namespace SEO_Ready\Breadcrumbs;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	header( 'Status: 403 Forbidden' );
