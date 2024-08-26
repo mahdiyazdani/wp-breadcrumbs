@@ -474,6 +474,11 @@ class Trails {
 	 */
 	protected function endpoint_trail() {
 
+		// Leave early if WooCommerce is not installed.
+		if ( $this->is_wc_installed() ) {
+			return;
+		}
+
 		$action         = isset( $_GET['action'] ) ? sanitize_text_field( wp_unslash( $_GET['action'] ) ) : '';
 		$endpoint       = is_wc_endpoint_url() ? WC()->query->get_current_endpoint() : '';
 		$endpoint_title = $endpoint ? WC()->query->get_endpoint_title( $endpoint, $action ) : '';
