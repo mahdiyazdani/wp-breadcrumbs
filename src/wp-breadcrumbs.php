@@ -475,7 +475,7 @@ class Trails {
 	protected function endpoint_trail() {
 
 		// Leave early if WooCommerce is not installed.
-		if ( $this->is_wc_installed() ) {
+		if ( ! $this->is_wc_installed() ) {
 			return;
 		}
 
